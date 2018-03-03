@@ -16,13 +16,6 @@ def con(entries):
 		alice = generate_keypair()
 		print(type(entries))
 		x="keyur"
-		for entry in entries:
-			string=list()
-			field = entry[0]
-			text  = entry[1].get()
-			string.append(text)
-			print('%s: "%s"' % (field, text))
-		print(string)
 		tx = bdb.transactions.prepare(operation='CREATE', signers=alice.public_key,asset={'data': {'message': x}})
 		signed_tx = bdb.transactions.fulfill(tx,private_keys=alice.private_key)
 		bdb.transactions.send(signed_tx)
